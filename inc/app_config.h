@@ -46,7 +46,7 @@ extern "C" {
 #define DISPLAY_CLEAR_DELAY_MS   100
 
 /* String Constants */
-#define APP_NAME_STRING         "VDU_ESP32"
+#define APP_NAME_STRING         "ESP32_OLED_Display"
 #define APP_VERSION_STRING      "1.0.0"
 #define HELLO_STRING            "Hello"
 #define WORLD_STRING            "World!"

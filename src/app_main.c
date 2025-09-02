@@ -46,7 +46,7 @@ esp_err_t app_main(void)
 {
     esp_err_t ret = ESP_OK;
     
-    ESP_LOGI(TAG, "Starting VDU_ESP32 Application");
+    ESP_LOGI(TAG, "Starting ESP32 OLED Display System");
     ESP_LOGI(TAG, "Version: %s", app_get_version());
     
     /* Initialize application configuration */

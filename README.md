@@ -1,4 +1,4 @@
-# VDU_ESP32 - Vehicle Display Unit
+# ESP32 OLED Display System
 
 A professional embedded C application for ESP32 v1.17.1 with a 0.96 inch OLED display (SSD1306). This project demonstrates MISRA C compliant code structure with modular architecture, featuring OLED text display, graphics, and I2C communication.
 
@@ -7,7 +7,7 @@ A professional embedded C application for ESP32 v1.17.1 with a 0.96 inch OLED di
 This project follows **MISRA C guidelines** with a clean modular structure:
 
 ```
-VDU_ESP32/
+ESP32_OLED_Display/
 ├── inc/                    # Header files
 │   ├── app_config.h       # Application configuration
 │   ├── app_main.h         # Main application interface
@@ -231,5 +231,5 @@ This project is provided as-is for educational and testing purposes. See individ
 ## 👨‍💻 Author
 
 **Shantanu Kumar**  
-*Vehicle Display Unit (VDU) ESP32 Project*  
+*ESP32 OLED Display System Project*  
 *Date: 2025-02-09*

@@ -1,7 +1,7 @@
 # OLED Display Orientation Guide
 
 ## Overview
-This document explains the OLED display orientation configuration and troubleshooting for the VDU_ESP32 project. The system uses a modular, MISRA C compliant architecture with dedicated OLED driver and pin configuration modules.
+This document explains the OLED display orientation configuration and troubleshooting for the ESP32 OLED Display System project. The system uses a modular, MISRA C compliant architecture with dedicated OLED driver and pin configuration modules.
 
 ## Hardware Configuration
 - **Display**: SSD1306 0.96" OLED (128x64 pixels)

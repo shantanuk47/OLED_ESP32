@@ -110,7 +110,7 @@ column = x * 8;     // Starting column
 
 ### File Structure
 ```
-VDU_ESP32/
+ESP32_OLED_Display/
 ├── inc/                       # Header files
 │   ├── app_config.h          # Application configuration
 │   ├── app_main.h            # Main application interface

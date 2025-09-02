@@ -1,4 +1,4 @@
-# VDU_ESP32 Documentation
+# ESP32 OLED Display System Documentation
 
 ## Project Overview
 This project implements a professional, MISRA C compliant OLED display system for the SSD1306 controller using ESP32. The system features modular architecture, comprehensive error handling, and extensive documentation for automotive and industrial applications.
@@ -55,7 +55,7 @@ GND      →    GND
 
 ### Software Setup
 1. **Install PlatformIO**: Install PlatformIO IDE or CLI
-2. **Clone Project**: Download the VDU_ESP32 project
+2. **Clone Project**: Download the ESP32 OLED Display System project
 3. **Connect Hardware**: Connect ESP32 via USB cable
 4. **Build Project**: `pio run`
 5. **Upload Firmware**: `pio run --target upload`
@@ -92,7 +92,7 @@ ESP32 OLED
 
 ## Project Structure
 ```
-VDU_ESP32/
+ESP32_OLED_Display/
 ├── inc/                       # Header files
 │   ├── app_config.h          # Application configuration
 │   ├── app_main.h            # Main application interface
