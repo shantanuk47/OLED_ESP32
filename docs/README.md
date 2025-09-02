@@ -1,7 +1,7 @@
-# ESP32 OLED Display Project Documentation
+# VDU_ESP32 Documentation
 
 ## Project Overview
-This project implements a complete OLED display driver for the SSD1306 controller using ESP32. The system provides text display capabilities with custom font rendering and orientation control.
+This project implements a professional, MISRA C compliant OLED display system for the SSD1306 controller using ESP32. The system features modular architecture, comprehensive error handling, and extensive documentation for automotive and industrial applications.
 
 ## Documentation Structure
 
@@ -54,10 +54,12 @@ GND      →    GND
 ```
 
 ### Software Setup
-1. Install PlatformIO
-2. Clone the project
-3. Connect ESP32 via USB
-4. Build and upload: `pio run --target upload`
+1. **Install PlatformIO**: Install PlatformIO IDE or CLI
+2. **Clone Project**: Download the VDU_ESP32 project
+3. **Connect Hardware**: Connect ESP32 via USB cable
+4. **Build Project**: `pio run`
+5. **Upload Firmware**: `pio run --target upload`
+6. **Monitor Output**: `pio device monitor`
 
 ### Expected Output
 The display should show:
@@ -70,16 +72,17 @@ ESP32 OLED
 ## Common Tasks
 
 ### Changing Display Orientation
-1. Open `src/main.c`
+1. Open `src/oled_driver.c`
 2. Modify `oled_init()` function
 3. Adjust `OLED_CMD_SEG_REMAP` and `OLED_CMD_COM_SCAN_*` commands
 4. See [OLED_Orientation_Guide.md](./OLED_Orientation_Guide.md) for details
 
 ### Adding New Characters
-1. Open `src/main.c`
-2. Find `oled_write_char()` function
+1. Open `src/font_data.c`
+2. Find `font_get_char_data_internal()` function
 3. Add new case in the switch statement
 4. Define 8x8 pixel pattern for the character
+5. Update `font_data.h` if needed
 
 ### Troubleshooting Display Issues
 1. Check hardware connections
@@ -89,24 +92,39 @@ ESP32 OLED
 
 ## Project Structure
 ```
-OLED_ESP32/
-├── src/
-│   └── main.c                 # Main application and OLED driver
+VDU_ESP32/
+├── inc/                       # Header files
+│   ├── app_config.h          # Application configuration
+│   ├── app_main.h            # Main application interface
+│   ├── font_data.h           # Font data definitions
+│   ├── oled_driver.h         # OLED display driver
+│   └── pin_config.h          # ESP32 pin configuration
+├── src/                       # Source files
+│   ├── app_config.c          # Application configuration implementation
+│   ├── app_main.c            # Main application implementation
+│   ├── font_data.c           # Font data implementation
+│   ├── oled_driver.c         # OLED display driver implementation
+│   └── pin_config.c          # ESP32 pin configuration implementation
 ├── docs/                      # Documentation
 │   ├── README.md             # This file
 │   ├── OLED_Orientation_Guide.md
 │   └── OLED_Display_Technical_Guide.md
 ├── platformio.ini            # PlatformIO configuration
+├── build_and_flash.bat       # Build automation script
 └── README.md                 # Project overview
 ```
 
 ## Key Features
-- ✅ I2C communication with SSD1306 OLED controller
-- ✅ Custom 8x8 pixel font system
-- ✅ Character rotation and mirroring
-- ✅ Display orientation control
-- ✅ Memory-efficient implementation
-- ✅ Complete documentation
+- ✅ **MISRA C Compliant**: Professional coding standards
+- ✅ **Modular Architecture**: Clean separation of concerns
+- ✅ **I2C Communication**: Direct SSD1306 OLED controller interface
+- ✅ **Custom Font System**: Optimized 8x8 pixel font rendering
+- ✅ **Character Orientation**: Advanced rotation and mirroring
+- ✅ **Display Control**: Comprehensive orientation management
+- ✅ **Error Handling**: Robust error checking and logging
+- ✅ **Memory Efficient**: Minimal memory footprint
+- ✅ **Complete Documentation**: Comprehensive technical guides
+- ✅ **Pin Management**: Centralized pin configuration
 
 ## Support and Maintenance
 
@@ -127,6 +145,8 @@ When modifying the code:
 - **v1.0**: Initial working implementation with correct orientation
 - **v1.1**: Added comprehensive documentation
 - **v1.2**: Optimized font rendering and character orientation
+- **v2.0**: Complete MISRA C restructure with modular architecture
+- **v2.1**: Added pin configuration management and enhanced error handling
 
 ## License
 This project is open source. Feel free to use, modify, and distribute according to your needs.

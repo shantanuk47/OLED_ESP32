@@ -1,7 +1,7 @@
 # OLED Display Orientation Guide
 
 ## Overview
-This document explains the OLED display orientation configuration and troubleshooting for the ESP32 SSD1306 0.96" OLED display project.
+This document explains the OLED display orientation configuration and troubleshooting for the VDU_ESP32 project. The system uses a modular, MISRA C compliant architecture with dedicated OLED driver and pin configuration modules.
 
 ## Hardware Configuration
 - **Display**: SSD1306 0.96" OLED (128x64 pixels)
@@ -16,6 +16,8 @@ GPIO22   →    SCL
 3.3V     →    VCC
 GND      →    GND
 ```
+
+**Note**: Pin configuration is managed in `inc/pin_config.h` and `src/pin_config.c` for centralized pin management.
 
 ## OLED Initialization Commands
 
@@ -45,7 +47,7 @@ OLED_CMD_SET_COM_PINS
 The project uses the following configuration for correct display orientation:
 
 ```c
-// In oled_init() function
+// In src/oled_driver.c - oled_init() function
 ret |= oled_write_cmd(OLED_CMD_SEG_REMAP | 0x1);  // Horizontal flip
 ret |= oled_write_cmd(OLED_CMD_COM_SCAN_DEC);     // Vertical scan decrement
 ret |= oled_write_cmd(OLED_CMD_SET_COM_PINS);
@@ -58,6 +60,7 @@ ret |= oled_write_cmd(0x12);                      // Standard COM pin config
 The project uses a custom font rendering approach to ensure characters display correctly:
 
 ```c
+// In src/oled_driver.c - oled_write_char() function
 // Mirror the font data horizontally first, then rotate 90 degrees counter-clockwise
 for (int i = 0; i < 8; i++) {
     uint8_t rotated_byte = 0;

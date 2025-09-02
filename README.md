@@ -1,6 +1,31 @@
-# ESP32 OLED Test Project
+# VDU_ESP32 - Vehicle Display Unit
 
-A simple test application for ESP32 v1.17.1 with a 0.96 inch OLED display (SSD1306). This project demonstrates basic OLED functionality including text display, graphics, and I2C communication.
+A professional embedded C application for ESP32 v1.17.1 with a 0.96 inch OLED display (SSD1306). This project demonstrates MISRA C compliant code structure with modular architecture, featuring OLED text display, graphics, and I2C communication.
+
+## 🏗️ Project Architecture
+
+This project follows **MISRA C guidelines** with a clean modular structure:
+
+```
+VDU_ESP32/
+├── inc/                    # Header files
+│   ├── app_config.h       # Application configuration
+│   ├── app_main.h         # Main application interface
+│   ├── font_data.h        # Font data definitions
+│   ├── oled_driver.h      # OLED display driver
+│   └── pin_config.h       # ESP32 pin configuration
+├── src/                    # Source files
+│   ├── app_config.c       # Application configuration implementation
+│   ├── app_main.c         # Main application implementation
+│   ├── font_data.c        # Font data implementation
+│   ├── oled_driver.c      # OLED display driver implementation
+│   └── pin_config.c       # ESP32 pin configuration implementation
+├── docs/                   # Documentation
+│   ├── OLED_Orientation_Guide.md
+│   ├── OLED_Display_Technical_Guide.md
+│   └── README.md
+└── build_and_flash.bat    # Build automation script
+```
 
 ## Hardware Requirements
 
@@ -18,66 +43,110 @@ A simple test application for ESP32 v1.17.1 with a 0.96 inch OLED display (SSD13
 | 3.3V      | VCC      | Power Supply |
 | GND       | GND      | Ground |
 
-## Features
+## ✨ Features
 
-- **Text Display**: Shows ASCII characters using a simple 8x8 font
-- **Graphics**: Basic pixel, line, and rectangle drawing functions
-- **Test Patterns**: Automated test sequences to verify display functionality
+### 🎯 Core Functionality
+- **Text Display**: Shows ASCII characters using optimized 8x8 font
+- **Graphics**: Pixel, line, and rectangle drawing functions
+- **Hello World Demo**: Continuous display of "Hello World! ESP32 OLED"
 - **I2C Communication**: Direct I2C communication without external libraries
-- **Minimal Memory Usage**: Uses standard ESP-IDF functions, no external libraries
 
-## Test Sequence
+### 🏛️ Code Quality
+- **MISRA C Compliant**: Follows automotive industry coding standards
+- **Modular Architecture**: Clean separation of concerns
+- **Professional Documentation**: Comprehensive header documentation
+- **Error Handling**: Robust error checking and logging
+- **Memory Efficient**: Minimal memory footprint using ESP-IDF functions
 
-The application runs a continuous test sequence that includes:
+### 🔧 Technical Features
+- **Pin Configuration Management**: Centralized pin definitions
+- **Font System**: Extensible character font support
+- **Display Orientation**: Configurable display orientation
+- **FreeRTOS Integration**: Task-based application structure
 
-1. **Text Display Test**: Shows "ESP32 OLED Test", "Hello World!", numbers, and "Test Complete"
-2. **Pattern Test**: Draws rectangles, lines, and pixel patterns
-3. **Simple Message**: Displays "ESP32 Working!" message
+## 🚀 Application Flow
 
-## Building and Flashing
+The application follows a structured initialization and execution sequence:
 
-### Using ESP-IDF
+### Initialization Phase
+1. **Application Configuration**: Initialize app settings and constants
+2. **Pin Configuration**: Configure ESP32 GPIO pins for I2C and general use
+3. **I2C Master Setup**: Initialize I2C communication at 400kHz
+4. **OLED Display Init**: Initialize SSD1306 display with proper orientation
+5. **Task Creation**: Create main application task on Core 0
 
-1. Install ESP-IDF v4.4 or later
-2. Set up the environment:
+### Runtime Phase
+1. **Hello World Display**: Shows "Hello", "World!", and "ESP32 OLED" on separate lines
+2. **Continuous Loop**: Clears and redisplays message every 1 second
+3. **Error Handling**: Comprehensive error logging and recovery
+
+## 🔨 Building and Flashing
+
+### Using PlatformIO (Recommended)
+
+1. **Install PlatformIO**: Install PlatformIO IDE or CLI
+2. **Open Project**: Navigate to project directory
+3. **Build Project**:
    ```bash
-   . $HOME/esp/esp-idf/export.sh
+   pio run
    ```
-3. Build the project:
-   ```bash
-   idf.py build
-   ```
-4. Flash to ESP32:
-   ```bash
-   idf.py -p /dev/ttyUSB0 flash monitor
-   ```
-   (Replace `/dev/ttyUSB0` with your actual port)
-
-### Using PlatformIO
-
-1. Install PlatformIO
-2. Open the project in PlatformIO
-3. Build and upload:
+4. **Flash to ESP32**:
    ```bash
    pio run --target upload
    ```
-4. Monitor serial output:
+5. **Monitor Serial Output**:
    ```bash
    pio device monitor
    ```
 
-## Configuration
+### Using ESP-IDF
+
+1. **Install ESP-IDF**: Install ESP-IDF v4.4 or later
+2. **Set Environment**:
+   ```bash
+   . $HOME/esp/esp-idf/export.sh
+   ```
+3. **Build Project**:
+   ```bash
+   idf.py build
+   ```
+4. **Flash to ESP32**:
+   ```bash
+   idf.py -p /dev/ttyUSB0 flash monitor
+   ```
+
+### Quick Build Script
+
+Use the provided batch script for Windows:
+```bash
+build_and_flash.bat
+```
+
+## ⚙️ Configuration
+
+### Pin Configuration (`inc/pin_config.h`)
+- **I2C SDA**: GPIO 21
+- **I2C SCL**: GPIO 22
+- **Built-in LED**: GPIO 2
+- **Button 1**: GPIO 0
+- **Button 2**: GPIO 35
 
 ### I2C Settings
 - **Clock Speed**: 400 kHz
-- **SDA Pin**: GPIO 21
-- **SCL Pin**: GPIO 22
 - **OLED Address**: 0x3C (default for most 0.96" OLEDs)
+- **Timeout**: 1000ms
 
 ### Display Settings
 - **Resolution**: 128x64 pixels
 - **Pages**: 8 (8 pixels per page)
 - **Contrast**: 0xCF (adjustable)
+- **Orientation**: Configured for proper text display
+
+### Application Settings (`inc/app_config.h`)
+- **Task Stack Size**: 4096 bytes
+- **Task Priority**: 5
+- **Task Core**: 0
+- **Display Update Delay**: 1000ms
 
 ## Troubleshooting
 
@@ -98,24 +167,69 @@ The application runs a continuous test sequence that includes:
 3. Try holding BOOT button while uploading
 4. Check if drivers are installed for your ESP32 board
 
-## Code Structure
+## 📁 Code Structure
 
-- `main/main.c`: Main application code with OLED functions
-- `CMakeLists.txt`: ESP-IDF build configuration
-- `main/CMakeLists.txt`: Component build configuration
-- `platformio.ini`: PlatformIO configuration
+### Header Files (`inc/`)
+- `app_config.h`: Application configuration and constants
+- `app_main.h`: Main application interface and function declarations
+- `font_data.h`: Font data definitions and character support
+- `oled_driver.h`: OLED display driver interface and commands
+- `pin_config.h`: ESP32 pin configuration and GPIO definitions
 
-## Future Enhancements
+### Source Files (`src/`)
+- `app_config.c`: Application configuration implementation
+- `app_main.c`: Main application logic and task management
+- `font_data.c`: Font data implementation with character rendering
+- `oled_driver.c`: OLED display driver with I2C communication
+- `pin_config.c`: ESP32 pin configuration and GPIO setup
 
-This is a basic test implementation. For production use, consider:
+### Build Configuration
+- `CMakeLists.txt`: Root ESP-IDF build configuration
+- `src/CMakeLists.txt`: Source component build configuration
+- `platformio.ini`: PlatformIO project configuration
+- `build_and_flash.bat`: Windows build automation script
 
-- Custom font support
-- Image display capabilities
-- Animation functions
-- Menu system
-- Touch input (if using touch-enabled display)
-- External library integration (Adafruit SSD1306, etc.)
+## 📚 Documentation
 
-## License
+Comprehensive documentation is available in the `docs/` folder:
 
-This project is provided as-is for educational and testing purposes.
+- **[OLED Orientation Guide](docs/OLED_Orientation_Guide.md)**: Detailed guide for display orientation and troubleshooting
+- **[Technical Guide](docs/OLED_Display_Technical_Guide.md)**: Complete technical reference for the OLED system
+- **[Documentation README](docs/README.md)**: Documentation structure and navigation
+
+## 🔮 Future Enhancements
+
+### Planned Features
+- **Extended Font Support**: Additional character sets and font sizes
+- **Graphics Library**: Advanced drawing functions and shapes
+- **Menu System**: Interactive menu navigation
+- **Animation Support**: Smooth transitions and effects
+- **Touch Integration**: Support for touch-enabled displays
+- **Data Logging**: Display system metrics and debug information
+
+### Production Considerations
+- **Error Recovery**: Enhanced fault tolerance and recovery mechanisms
+- **Power Management**: Low-power modes and sleep functionality
+- **Calibration**: Display calibration and adjustment tools
+- **Testing Framework**: Automated testing and validation suite
+
+## 🏆 MISRA C Compliance
+
+This project follows MISRA C guidelines for automotive and safety-critical applications:
+
+- ✅ **Block Comments**: Uses `/* */` instead of `//` comments
+- ✅ **Header Documentation**: Comprehensive file and function documentation
+- ✅ **Modular Design**: Clear separation of concerns
+- ✅ **Error Handling**: Robust error checking and logging
+- ✅ **Type Safety**: Proper type definitions and casting
+- ✅ **Memory Management**: Safe memory allocation and usage
+
+## 📄 License
+
+This project is provided as-is for educational and testing purposes. See individual source files for detailed licensing information.
+
+## 👨‍💻 Author
+
+**Shantanu Kumar**  
+*Vehicle Display Unit (VDU) ESP32 Project*  
+*Date: 2025-02-09*

@@ -14,14 +14,18 @@
 
 ## Overview
 
-This project implements a complete OLED display driver for the SSD1306 controller using ESP32. The system provides text display capabilities with custom font rendering and orientation control.
+This project implements a professional, MISRA C compliant OLED display system for the SSD1306 controller using ESP32. The system features modular architecture with dedicated driver modules, comprehensive error handling, and extensive documentation for automotive and industrial applications.
 
 ### Key Features
-- I2C communication with SSD1306 OLED controller
-- Custom 8x8 pixel font system
-- Character rotation and mirroring
-- Display orientation control
-- Memory-efficient implementation
+- **MISRA C Compliant**: Professional coding standards for safety-critical applications
+- **Modular Architecture**: Clean separation of concerns with dedicated modules
+- **I2C Communication**: Direct SSD1306 OLED controller interface
+- **Custom Font System**: Optimized 8x8 pixel font rendering with character support
+- **Character Orientation**: Advanced rotation and mirroring algorithms
+- **Display Control**: Comprehensive orientation management
+- **Error Handling**: Robust error checking and logging throughout
+- **Memory Efficient**: Minimal memory footprint using ESP-IDF functions
+- **Pin Management**: Centralized pin configuration system
 
 ## Hardware Specifications
 
@@ -106,29 +110,47 @@ column = x * 8;     // Starting column
 
 ### File Structure
 ```
-src/
-├── main.c              # Main application and OLED driver
-├── CMakeLists.txt      # Build configuration
-platformio.ini          # PlatformIO configuration
-docs/                   # Documentation
-├── OLED_Orientation_Guide.md
-└── OLED_Display_Technical_Guide.md
+VDU_ESP32/
+├── inc/                       # Header files
+│   ├── app_config.h          # Application configuration
+│   ├── app_main.h            # Main application interface
+│   ├── font_data.h           # Font data definitions
+│   ├── oled_driver.h         # OLED display driver
+│   └── pin_config.h          # ESP32 pin configuration
+├── src/                       # Source files
+│   ├── app_config.c          # Application configuration implementation
+│   ├── app_main.c            # Main application implementation
+│   ├── font_data.c           # Font data implementation
+│   ├── oled_driver.c         # OLED display driver implementation
+│   ├── pin_config.c          # ESP32 pin configuration implementation
+│   └── CMakeLists.txt        # Build configuration
+├── docs/                      # Documentation
+│   ├── OLED_Orientation_Guide.md
+│   ├── OLED_Display_Technical_Guide.md
+│   └── README.md
+├── platformio.ini            # PlatformIO configuration
+└── build_and_flash.bat       # Build automation script
 ```
 
 ### Main Components
 
 #### 1. Initialization Layer
 ```c
-void app_main()                    // ESP-IDF entry point
-├── i2c_master_init()             // Initialize I2C bus
-├── oled_init()                   // Initialize OLED display
-└── xTaskCreate(app_main_task)    // Create main application task
+// src/app_main.c
+esp_err_t app_main()                    // ESP-IDF entry point
+├── app_config_init()                  // Initialize application configuration
+├── pin_config_init()                  // Initialize pin configuration
+├── i2c_master_init()                  // Initialize I2C bus
+├── oled_init()                        // Initialize OLED display
+└── xTaskCreatePinnedToCore()          // Create main application task
 ```
 
 #### 2. Communication Layer
 ```c
+// src/oled_driver.c
 oled_write_cmd(uint8_t cmd)       // Send command to OLED
 oled_write_data(uint8_t data)     // Send data to OLED
+oled_write_byte(uint8_t data, bool is_cmd)  // Low-level I2C communication
 ```
 
 #### 3. Display Control Layer
