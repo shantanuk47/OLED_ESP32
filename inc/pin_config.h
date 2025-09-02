@@ -1,8 +1,25 @@
 /***************************************************************
  * pin_config.h
- * ESP32 Pin Configuration Definitions
+ * ESP32 Pin Configuration Definitions for OLED Display
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This header defines all GPIO pin assignments and configurations
+ * for the ESP32 OLED display project. It centralizes pin management
+ * for I2C communication with the SSD1306 OLED display, general
+ * GPIO usage, and future expansion capabilities.
+ *
+ * Pin Assignments:
+ * - I2C: SDA (GPIO21), SCL (GPIO22) for OLED communication
+ * - LED: GPIO2 for built-in LED indication
+ * - Buttons: GPIO0, GPIO35 for user input
+ * - Future: SPI, UART pins for expansion
+ *
+ * Features:
+ * - Centralized pin configuration management
+ * - I2C pin setup for OLED communication
+ * - GPIO configuration for general use
+ * - Extensible design for future hardware additions
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

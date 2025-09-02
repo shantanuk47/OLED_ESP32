@@ -2,7 +2,23 @@
  * oled_driver.h
  * SSD1306 OLED Display Driver Header File
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This header defines the interface for controlling the 0.96" SSD1306
+ * OLED display (128x64 pixels) via I2C communication. It provides
+ * functions for display initialization, text rendering, graphics
+ * drawing, and display control operations.
+ *
+ * Features:
+ * - I2C communication with SSD1306 controller
+ * - Text display with custom 8x8 font
+ * - Graphics functions (pixel, line, rectangle)
+ * - Display orientation control
+ * - Memory management and cursor control
+ *
+ * Hardware: 0.96" SSD1306 OLED Display (128x64)
+ * Interface: I2C (SDA: GPIO21, SCL: GPIO22)
+ * Address: 0x3C (default)
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

@@ -1,8 +1,25 @@
 /***************************************************************
  * app_main.h
- * Main Application Header File
+ * Main Application Header for ESP32 OLED Display System
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This header defines the main application interface and entry points
+ * for the ESP32 OLED display system. It provides function declarations
+ * for the main application logic, task management, and display
+ * demonstration functions.
+ *
+ * Main Components:
+ * - Application entry point and initialization
+ * - Main application task implementation
+ * - Hello World display demonstration
+ * - Test pattern display functions
+ *
+ * Features:
+ * - FreeRTOS task management
+ * - OLED display demonstration
+ * - Error handling and logging
+ * - Application lifecycle management
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

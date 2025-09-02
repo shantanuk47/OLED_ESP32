@@ -1,8 +1,25 @@
 /***************************************************************
  * app_config.h
- * Application Configuration and Constants
+ * Application Configuration for ESP32 OLED Display System
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This header defines application-level configuration constants,
+ * task parameters, and system settings for the ESP32 OLED display
+ * project. It centralizes configuration management for the
+ * "Hello World! ESP32 OLED" display application.
+ *
+ * Configuration Areas:
+ * - FreeRTOS task parameters (stack size, priority, core assignment)
+ * - Display timing and update intervals
+ * - Application strings and constants
+ * - System-wide configuration settings
+ *
+ * Features:
+ * - Centralized configuration management
+ * - Task parameter definitions
+ * - Display timing configuration
+ * - Application string constants
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

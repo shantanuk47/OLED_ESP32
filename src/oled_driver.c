@@ -2,7 +2,25 @@
  * oled_driver.c
  * SSD1306 OLED Display Driver Implementation
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This module implements the complete driver for the 0.96" SSD1306
+ * OLED display (128x64 pixels). It handles I2C communication,
+ * display initialization, text rendering with custom font rotation,
+ * graphics drawing, and display control operations.
+ *
+ * Key Functions:
+ * - I2C master initialization and communication
+ * - OLED display initialization with proper orientation
+ * - Text rendering with character rotation and mirroring
+ * - Graphics primitives (pixel, line, rectangle)
+ * - Display memory management and cursor control
+ *
+ * The driver includes special font rendering algorithms to handle
+ * character orientation for proper display on the OLED screen.
+ *
+ * Hardware: 0.96" SSD1306 OLED Display (128x64)
+ * Interface: I2C (SDA: GPIO21, SCL: GPIO22, Address: 0x3C)
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

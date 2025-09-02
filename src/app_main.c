@@ -1,8 +1,29 @@
 /***************************************************************
  * app_main.c
- * Main Application Implementation
+ * Main Application Implementation for ESP32 OLED Display System
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This module implements the main application logic for the ESP32
+ * OLED display system. It handles system initialization, task
+ * creation, and the main application loop that demonstrates
+ * "Hello World! ESP32 OLED" display functionality.
+ *
+ * Application Flow:
+ * - System initialization (pins, I2C, OLED)
+ * - FreeRTOS task creation and management
+ * - Continuous Hello World display demonstration
+ * - Error handling and logging throughout
+ *
+ * Key Functions:
+ * - Application entry point and initialization
+ * - Main application task with display loop
+ * - Hello World display demonstration
+ * - Test pattern display functions
+ *
+ * Display Demonstration:
+ * Shows "Hello", "World!", and "ESP32 OLED" on separate lines
+ * with continuous clearing and redisplay every second.
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

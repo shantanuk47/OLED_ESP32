@@ -1,8 +1,16 @@
 /***************************************************************
  * font_data.h
- * 8x8 Font Data Definitions for OLED Display
+ * 8x8 Font Data Definitions for SSD1306 OLED Display
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This header defines the interface for font data management and
+ * character rendering on the 0.96" SSD1306 OLED display. It provides
+ * functions to retrieve font data for ASCII characters and validate
+ * character support for the custom 8x8 pixel font system.
+ *
+ * The font system supports characters used in "Hello World! ESP32 OLED"
+ * display including letters, numbers, and punctuation marks.
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

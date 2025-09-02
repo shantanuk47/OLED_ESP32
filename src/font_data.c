@@ -1,8 +1,19 @@
 /***************************************************************
  * font_data.c
- * 8x8 Font Data Implementation for OLED Display
+ * 8x8 Font Data Implementation for SSD1306 OLED Display
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This module provides font data and character rendering functions for
+ * the 0.96" SSD1306 OLED display (128x64 pixels). It includes a custom
+ * 8x8 pixel font system with support for ASCII characters used in
+ * "Hello World! ESP32 OLED" display.
+ *
+ * Features:
+ * - Custom 8x8 pixel font data for ASCII characters
+ * - Character lookup and validation functions
+ * - Memory-efficient font storage
+ * - Support for text display on OLED
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/

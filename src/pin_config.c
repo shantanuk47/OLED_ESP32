@@ -1,8 +1,25 @@
 /***************************************************************
  * pin_config.c
- * ESP32 Pin Configuration Implementation
+ * ESP32 Pin Configuration Implementation for OLED Display
  *
- * Project: VDU_ESP32 (Vehicle Display Unit)
+ * This module implements GPIO pin configuration and management for
+ * the ESP32 OLED display project. It handles I2C pin setup for
+ * SSD1306 OLED communication, general GPIO configuration, and
+ * provides centralized pin management functions.
+ *
+ * Key Functions:
+ * - I2C pin configuration (SDA: GPIO21, SCL: GPIO22)
+ * - GPIO pin setup for LED and button inputs
+ * - Pin validation and error handling
+ * - Centralized pin management interface
+ *
+ * Hardware Configuration:
+ * - I2C pins configured for OLED communication
+ * - Built-in LED on GPIO2 for status indication
+ * - Button inputs on GPIO0 and GPIO35
+ * - Future expansion pins for SPI/UART
+ *
+ * Project: ESP32 OLED Display System
  * Author: Shantanu Kumar
  * Date: 2025-02-09
  ***************************************************************/
